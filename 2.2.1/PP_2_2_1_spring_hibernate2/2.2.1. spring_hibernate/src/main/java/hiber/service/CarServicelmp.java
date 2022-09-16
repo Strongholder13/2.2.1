@@ -9,17 +9,21 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 @Service
 public class CarServicelmp implements CarService {
-
-        @Autowired
-        private CarDao carDao;
-        @Transactional
-        @Override
-        public void add(Car car) {
-            carDao.add(car);
-        }
-        @Transactional(readOnly = true)
-        @Override
-        public List<Car> listCars() {
-            return carDao.listCars();
-        }
+    @Autowired
+    public CarServicelmp(CarDao carDao) {
+        this.carDao = carDao;
     }
+    private CarDao carDao;
+
+    @Transactional
+    @Override
+    public void add(Car car) {
+        carDao.add(car);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Car> listCars() {
+        return carDao.listCars();
+    }
+}
