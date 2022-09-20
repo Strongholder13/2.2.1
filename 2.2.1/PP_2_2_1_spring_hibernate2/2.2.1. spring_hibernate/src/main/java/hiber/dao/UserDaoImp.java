@@ -25,8 +25,8 @@ public class UserDaoImp implements UserDao {
 
    @Override
       public List<User> listUsers() {
-      Query query = sessionFactory.getCurrentSession().createQuery("from User");
-      List<User> list = query.getResultList();
+      Query<User> query = sessionFactory.getCurrentSession().createQuery("from User");
+      List list = query.getResultList();
       return list;
    }
 public User getFrom(String model, int series){
